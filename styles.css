@@ -1,0 +1,709 @@
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300&family=Great+Vibes&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    /* box-sizing: border-box; */
+    font-family: "Be Vietnam Pro", sans-serif;
+    scroll-behavior: smooth;
+}
+
+:root{
+    --bgOrange: #e84949;
+}
+
+#wrapper{
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.container{
+    width: 1200px;
+    margin: 0 auto; /* to keep the container in the center. */
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem ;
+}
+
+.logo{
+    width: 80px;
+}
+
+.logo-container{
+    display: flex;
+    justify-content: baseline;
+    align-items: center;
+}
+
+.logo-text{
+    margin-left: -1.0rem;
+    font-size: 28px;
+}
+
+.nav-items{
+    display: flex;
+    gap: 2rem;
+    padding: 0 4em;
+}
+
+.nav-items div{   /* this means nav-items div ke andar jo divs hai unke liye */
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.nav-items div a{ /* this means nav-items div ke andar jo divs hai uske andar jo a tags hai unke liye */
+    color: black;
+}
+
+a{
+    text-decoration: none;  /* to remove underline from the anchor tag */
+}
+
+.nav-items div:hover{
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.intro-section{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 5rem;
+    margin: 4rem auto;
+    padding: 0 1rem;
+    padding-bottom: 8rem;
+}
+
+.faded-text{
+    position: absolute; /* this will make the faded text come to bottom on the basis of bottom and left defined as -16% and -5% resp. */
+    user-select: none; /* so that no user is able to select this text. */
+    font-size: 7em;
+    color: rgb(231,231,231);
+
+    bottom: -12%;
+    left: -7%;
+    font-weight: bold;
+    transition: all 3s;
+}
+
+.intro-section-left{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.intro-section-heading{
+    font-size: 35px;
+    color: #343d68;
+    font-weight: 500;
+}
+
+.role{
+    color: #4e45d5;
+    font-weight: 800;
+}
+
+.intro-section-sub-heading{
+    font-size: 45px;
+    line-height: 45px;
+}
+
+.intro-section-description{
+    margin-top: 1rem;
+    width: 70%;
+    font-weight: 500;
+}
+
+.pink-btn{
+    background-color: var(--bgOrange);
+    width: fit-content;
+    padding: 0.8rem 2.3rem;  /* top and bottom padding 0.8rem, left and right padding 2.3rem */
+    color: white;
+    font-size: 18px;
+    box-shadow: 5px 5px 7px 0px #0000003f;
+    cursor: pointer;
+    transition: all 0.5s;
+    font-weight: 500;
+    border: solid 3px transparent;
+    position: relative;
+    z-index: 1;
+}
+
+.pink-btn::before{  /* In CSS, ::before creates a pseudo-element that is the first child of the selected element. It is often used to add cosmetic content to an element with the content property. It is inline by default. */
+    content: "";
+    background-color: #fff;
+    position: absolute; /* as I want to overlap the black screen over the hire me button. */
+    top: 0;        /* Setting top: 0; left: 0; bottom: 0; right: 0; gives the browser a new bounding box for the block. At this point the block will fill all available space in its offset parent, which is the body or position: relative; container. */
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: all 0.8s;
+    z-index: -1;
+}
+
+.pink-btn:hover::before{
+    transform: scaleX(1);
+}
+
+.pink-btn:hover{
+    border: solid 3px var(--bgOrange);
+    color: black;
+}
+
+.intro-section-right{
+    position: relative;
+}
+
+.absolute{
+    position: absolute;
+}
+
+.user-image{
+    padding: 2.5rem; /* so as to add that white border around the image. */
+    filter: grayscale(1);
+    transition: all 1s;
+    animation: scaleImage 5s linear infinite;
+}
+
+.user-image img{
+    width: 350px;
+    height: 400px;
+}
+
+.user-image img{
+    z-index: -9;
+}
+
+@keyframes scaleImage {
+    0%{
+        filter: grayscale(0);
+        transform: scale(1);  
+    }
+    50%{
+        filter: grayscale(1);
+        transform: scale(1.1);
+        box-shadow: 3px 3px 10px black;
+    }
+    100%{
+        filter: grayscale(0);
+        transform: scale(1);
+    }
+}
+
+.icon-dots{
+    z-index: 9;
+    bottom: -1rem;
+    right: 0;
+    animation-name: dotsAnimation;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes dotsAnimation {
+    0%{
+        transform: translateY(0px); 
+    }
+    50%{
+        transform: translateY(-15px); 
+    }
+    100%{
+        transform: translateY(0px); 
+    }
+}
+
+.icon-cube{
+    z-index: 9;
+    top: -0.8em;
+    right: 1em;
+    animation-name: cubeAnimation;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes cubeAnimation {
+    0%{
+        transform: rotateY(0deg) translateY(0px); 
+    }
+    50%{
+        transform: rotateY(180deg) translateY(-12px); 
+    }
+    100%{
+        transform: rotateY(360deg) translateY(0px); 
+    }
+}
+
+.icon-circle{
+    z-index: 9;
+    left: 0;
+    bottom: 0;
+    animation-name: circleAnimation;
+    animation-duration: 6s;
+    animation-timing-function: linear ;
+    animation-iteration-count: infinite;
+}
+
+@keyframes circleAnimation {
+    50%{
+        left: 5%;
+        bottom: 10%; 
+    }
+}
+
+.icon-zigzag{
+    z-index: 9;
+    top: 1.5em;
+    left: -0.3em;
+    animation: zigzagAnimation 5s ease-in infinite;
+}
+
+@keyframes zigzagAnimation {
+    50%{
+        left: 5%;
+        top: 2%; 
+    }
+}
+
+.icon-plus{
+    z-index: 9;
+    top: -0.8rem;
+    left: 50%;
+    animation: plusAnimation 5s ease-in infinite;
+}
+
+@keyframes plusAnimation {
+    50%{
+        left: 48%;
+        top: 3%; 
+    }
+}
+
+.project-section{
+    background-color: rgb(231,231,231);
+    margin-top: 4rem;
+}
+
+.page-header{
+    color: var(--bgOrange);
+    text-align: center;
+    font-size: 90px;
+    padding-top: 30px;
+}
+
+.project-container{
+    max-width: 1200px;  /* we have made cards in a particular width of a page. */
+    margin: 0 auto;
+    padding: 3rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 120px;
+}
+
+.project-card{
+    width: 90%;
+    height: 550px;
+    /* background-image: url(images/projects/Project1.png); */
+    background-size: cover;
+    position: relative; /* so that I can overlap text on these images */ 
+    box-shadow: 0px 0px 40px #1f1f1f;
+}
+
+.project-card::after{   /* put a black tint on the image using the after pseudo-selector. */
+    content: ""; /* as we don't want to put any content, we have to specify this alwaysa. */
+    position: absolute; /* so as to impose a black tint onto the image */
+    top: 0; /* as I want the black tint to cover all of the card, thus we use these 4 properties. */
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: #1f1f1f9a;
+    transform: scaleX(1);
+    z-index: 0;
+}
+
+.project-card::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(45deg,#343d68,#343d68be,#343d687c);
+    transform: scaleX(0); /* as I want the blue filter to come through x-direction on hovering on the card. */
+    transform-origin: left;
+    transition: all 0.4s;
+    z-index: 1;
+}
+
+.project-card:hover::before{ /* this means that project card pe hover karne pe before mein kya kya changes aayenge.*/
+    transform: scaleX(1);
+}
+
+.project-number{
+    position: absolute; /* for overlapping the number over the card. */
+    font-size: 200px;
+    font-weight: 600;
+    color: white;
+    z-index: 10; /* so as to bring it in front of the card */
+    display: none;
+    
+}
+
+.project-card:hover .project-number{
+    display: block;
+}
+
+.project-number-right{
+    right: -40px;
+    top: -45px;
+}
+
+.project-number-left{
+    left: -40px;
+    top: -45px;
+}
+
+.project-content{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    padding: 2em;
+    bottom: 20%;
+    z-index: 5;
+    gap: 1em;
+    transition: all 0.4s;
+}
+
+.project-content-left{
+    left: 10%;
+}
+
+.project-content-right{
+    right: 10%;
+}
+
+/* now while working on the skill container, as we can see the pics are arranged in a line and is coming on next line as well thus we get the idea, that we can make it a flex and use flex wrap so that it can go onto the next line. */
+.project-skill{
+    width: 40px;
+}
+
+.project-skill-container{
+    width: 60%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.project-heading{
+    font-size: 50px;
+    font-weight: bold;
+    line-height: 3rem;
+}
+
+.project-subheading{
+    width: 70%;
+    font-size: 16px;
+    font-style: italic;
+}
+
+.btn-grp{
+    display: flex;
+    gap: 0.9rem;
+    align-items: center;
+}
+
+.btn-project:hover{
+    border: none;
+}
+
+.icon{
+    cursor: pointer;
+    color: white;
+    font-size: 35px;
+    transition: all 0.4s; /* if I would have written this in .icon:hover, then on hovering there will be transition but as soon as I stop hovering, colour will change to white again with a jerk, it won't be smooth then. */
+}
+
+.icon:hover{
+    color: var(--bgOrange);
+}
+
+.project-card:hover .project-content{ /* this means where ever we hover in the card, the content will scale by 1.1 times. */
+    transform: scale(1.1);
+}
+
+#project1{
+    background-image: url(images/projects/Project1.png);
+}
+
+#project2{
+    background-image: url(images/projects/Project2.png);
+    margin-left: 120px;
+}
+
+#project3{
+    background-image: url(images/projects/Project3.png);
+}
+
+#project4{
+    background-image: url(images/projects/Project4.png);
+    margin-left: 120px;
+}
+
+@media (max-width:1300px){
+    .page-header{
+        padding-top: 30px;
+        color: var(--bgOrange);
+        text-align: center;
+        font-size: 40px;
+    }
+    .project-container{
+        padding: 5px;
+        margin: 10px;
+        gap: 60px;
+    }
+    .project-card{
+        width: 100%;
+        height: 300px;
+    }
+    .project-card{
+        background-size: cover;
+        background-position: center;
+    }
+    .project-content{
+        scale: 0.5;
+        bottom: 0;
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+    .project-content-left{
+        left: 0;
+    }
+    .project-heading{
+        font-size: 40px;
+        width: 100%;
+    }
+    .project-subheading{
+        width: 100%;
+    }
+    #project2{
+        margin-left: 0;
+    }
+    #project4{
+        margin-left: 0;
+    }
+    .project-skill-container{
+        width: 100%;
+    }
+    .project-skill{
+        width: 35px;
+    }
+    .project-card:hover .project-number{
+        display: none;
+    }
+    .project-card:hover .project-content{
+        scale: 0.55 ;
+    }
+}
+
+.skills-container{
+    position: relative;
+    display: flex;
+    padding: 5rem;
+    margin: 10rem auto;
+    gap: 30px;
+}
+
+.skill-container-left{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.skill-container-right{
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+    position: relative;
+    gap: 2rem;
+    justify-content: center; /* to move the blob to center */
+}
+
+.skill-fade-text{
+    position: absolute;
+    font-size: 15em;
+    font-style: bold;
+    color: rgb(231, 231, 231);
+    bottom: -34.5%;
+    right: -25%;
+    user-select: none;
+    overflow-y: hidden;
+}
+
+.blob-style{
+    position:absolute;
+    top:50%;
+    left:50%;
+    z-index:-5;
+    transform:translate(-50%, -50%);
+    animation: blobAnimate 3s linear infinite;
+}
+
+@keyframes blobAnimate {
+    50%{
+        top:54%;
+        left:46%;
+    }
+}
+
+.skills-logo{
+    width: 90px;
+    transition: all 0.5s;
+}
+
+.skills-logo:hover{
+    transform: scale(1.2);
+}
+
+.skill-heading{
+    font-size: 50px;
+    font-style: bold;
+    color: var(--bgOrange);
+    line-height: 50px;
+}
+
+.caps{
+    font-size: 90px;
+}
+
+.skill-subheading{
+    margin-top: 1rem;
+    width: 85%;
+    text-align: justify; /* occupies all of the width.      read more about other attributes. */
+}
+
+.skill-subheading p{
+    margin: 15px 0;
+}
+
+.contactus-form-container{
+    width: 100%;
+    background-color: rgb(231, 231, 231);
+}
+
+.contactus-heading{
+    font-size: 5em;
+    color: var(--bgOrange);
+    padding-top: 2rem;
+}
+
+.contactus-sub-heading{
+    font-size: 3rem;
+    color: #343d68aa;
+    text-transform: capitalize; /* used for capitalizing the first letter of each word in a sentence. */
+}
+
+.contactus-form-container{ /* so as to centralize the items in the form */
+    margin-top: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form{  /* so as to make the boxes appear column-wise. */
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 70%;
+    margin: 2rem 5rem;
+}
+
+.formfield-container{ /* wasn't necessary */
+    width: 100%;
+}
+
+.formfield{
+    width: 100%;
+    height: 42px;
+    padding: 0 2rem;
+    font-size: 18px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 10px #1f1f1f;
+    font-weight: 500;
+    border: none;
+    margin-top: 27px;
+}
+
+.formfield-textarea{
+    height: auto;
+    padding-top: 1rem;
+}
+
+#submit-btn{
+    border: none;
+    font-size: 1.4rem;
+    margin: 1rem 0;
+}
+
+#submit-btn:hover{
+    scale: 0.9;
+}
+
+.submit-icon{
+    padding: 0 1rem;
+    font-size: 1.5rem;
+}
+
+footer{
+    position: relative; /* made it relative so as to impose faded text later */
+    margin-top: -1px;
+    background-color: #343d68;
+    padding: 5rem;
+}
+
+.footer-wrapper{
+    display: flex;
+    gap: 1rem;
+    padding: 1.2rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-faded-text{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    color: #535c87;
+    user-select: none;
+    font-size: 5em;
+}
+
+.link-wrapper{
+    display: flex;
+    gap: 1.2rem;
+}
+
+.link-wrapper div a{
+    color: white; 
+    text-decoration: none;
+    transition: all 0.6s;
+}
+
+.link-wrapper div a:hover{
+    color: var(--bgOrange);
+}
+
+.icon-wrapper{
+    display: flex;
+    gap: 1.2rem;
+}
